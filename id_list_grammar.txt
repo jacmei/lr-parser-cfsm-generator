@@ -1,0 +1,3 @@
+id_list : id id_list_tail
+id_list_tail : , id id_list_tail
+id_list_tail : ;
