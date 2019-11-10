@@ -2,13 +2,30 @@ from Production import *
 from ProductionState import *
 from State import *
 
-def create_state(production_states, num):
-    s = State()
+productions = []
 
-def main():
+def create_state(production_states, num):
+    s = State(num, production_states, [])
+    progresses = []
+    ps_index = 0
+    for ps in s._bases:
+        if ps._production._RHS[ps._progress] not in progresses:
+            progresses.add(ps._production._RHS[ps._progress])
+            ps_index += 1
+    first = 0
+    last = 0
+    for prog in progresses:
+        for prod in productions:
+            if prod._LHS == prog:
+                s._closures.append(ProductionState(prod, 0))
+                last += 1
+    for i in range(first, last + 1):
+        for prod in productions:
+            if prod._LHS == s._closures[i]._production.[s._closures[i]._progress]:
+
+def generate():
     file_to_parse = "id_list_grammar.txt" #input("Input filename: ")
     try: 
-        productions = []
         with open(file_to_parse) as f:
             for line in f:
                 line = line.strip()
