@@ -1,0 +1,17 @@
+program : stmt_list $$
+stmt_list : stmt_list stmt
+stmt_list : stmt
+stmt : id := expr
+stmt : read id
+stmt : write expr
+expr : term
+expr : expr add_op term
+term : factor
+term : term mult_op factor
+factor : ( expr )
+factor : id
+factor : number
+add_op -> +
+add_op -> -
+mult_op : *
+mult_op : /
