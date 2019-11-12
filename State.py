@@ -10,4 +10,10 @@ class State:
         self._conflicts = conflicts
     
     def __repr__(self):
-        return "State([Number: " + repr(self._num) + "] [" + repr(self._bases) + "] [" + repr(self._closures) + "])"
+        return "State([Number: " + repr(self._value) + "] [" + repr(self._bases) + "] [" + repr(self._closures) + "])"
+    
+    def __eq__(self, other):
+        if isinstance(other, State):
+            return self._bases == other._bases
+        else:
+            return NotImplemented
