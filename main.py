@@ -144,6 +144,7 @@ def generate_states(production_master_list, initial_basis, outfile):
                                 s._conflicts.add("REDUCE/REDUCE")
                     other_closure_index += 1
             closure_index += 1
+        
         new_state_value = state_value + 1
         for progress in unique_progresses_list:
             future_basis_list = []
@@ -169,10 +170,10 @@ def generate_states(production_master_list, initial_basis, outfile):
             #for x in states_master_list:
             #    print(x)
             #print()
-            for state in states_master_list:
-                if future_state == state:
+            for existing_state in states_master_list:
+                if future_state == existing_state:
                     for production_state in basis_list:
-                        production_state._goto = state._value
+                        production_state._goto = existing_state._value
                     to_increment = False
             if to_increment:
                 new_state_value += 1
